@@ -4,7 +4,7 @@ unsigned char	ft_toupper(char c);
 
 int	main(void)
 {
-	char test = 'a';
+	char test = 'd';
 	unsigned char response;
 
 	response = ft_toupper(test);

@@ -1,3 +1,5 @@
+#include <stddef.h>
+
 static unsigned int	ft_strlen(char *str)
 {
 	unsigned int	i;
@@ -8,10 +10,10 @@ static unsigned int	ft_strlen(char *str)
 	return (i);
 }
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcat(char *dest, char *src, size_t size)
 {
 	unsigned int	i;
-	unsigned int	len;
+	size_t			len;
 
 	i = 0;
 	len = 0;

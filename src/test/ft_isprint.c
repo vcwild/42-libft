@@ -3,16 +3,16 @@
 
 unsigned int	ft_isprint(char *str)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '\t' ||
-			str[i] == '\v' ||
-			str[i] == '\r' ||
-			str[i] == '\n' ||
-			str[i] == '\f')
+		if (str[i] == '\t'
+			|| str[i] == '\v'
+			|| str[i] == '\r'
+			|| str[i] == '\n'
+			|| str[i] == '\f')
 			return (FALSE);
 		i++;
 	}
