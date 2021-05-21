@@ -1,6 +1,6 @@
 #include "libft.h"
 
-static int	isspace(char c)
+static int	ft_isspace(char c)
 {
 	if (c == '\t'
 		|| c == '\v'
@@ -11,14 +11,20 @@ static int	isspace(char c)
 	return (0);
 }
 
-int			ft_atoi(const char *nptr)
+/**
+ * @brief converts the initial portion of the string pointed to by nptr to int.
+ * 
+ * @param nptr Pointer to the area of memory of the string to be converted
+ * @return int The converted value or 0 on error
+ */
+int	ft_atoi(const char *nptr)
 {
 	int	res;
 	int	is_neg;
 
 	is_neg = 0;
 	res = 0;
-	while (isspace(*nptr))
+	while (ft_isspace(*nptr))
 		nptr++;
 	if (*nptr == '-')
 	{
@@ -30,6 +36,6 @@ int			ft_atoi(const char *nptr)
 	while (ft_isdigit(*nptr))
 		res = (res * 10) + (*nptr++ - 48);
 	if (is_neg)
-		return(res * -1);
+		return (res * -1);
 	return (res);
 }

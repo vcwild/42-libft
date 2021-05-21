@@ -6,7 +6,7 @@
  */
 int	ft_isdigit(int c)
 {
-	char str;
+	char	str;
 
 	str = (char)c;
 	if ((str >= '0' && str <= '9'))
