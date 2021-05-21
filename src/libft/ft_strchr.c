@@ -1,3 +1,5 @@
+#include "libft.h"
+
 /**
  * @brief Returns a pointer to the
  * first occurrence of the character c in the string s.
@@ -9,14 +11,15 @@
  */
 char	*ft_strchr(const char *s, int c)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (s[i])
+	if (c > 127)
+		c %= 256;
+	while (*s)
 	{
-		if (s[i] == (char)c)
-			return (&s[i]);
-		i++;
+		if (*s == c)
+			return ((char *)s);
+		s++;
 	}
-	return (&s[i]);
+	if (*s == c)
+		return ((char *)s);
+	return (NULL);
 }
