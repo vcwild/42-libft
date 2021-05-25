@@ -28,6 +28,7 @@ static int	ft_strlen_ignore_char(const char *str, char c)
 	}
 	return (len);
 }
+
 /**
  * @brief Copies a string `str` from `start` to `end`
  *
@@ -60,27 +61,24 @@ static char	*ft_strcut(const char *str, int start, int end)
  * @return char** Returns a matrix of two splitted arrays,
  * else returns NULL if allocation fails.
  */
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
 	int		idx;
 	char	**str;
 
-	if (!s)
-		return (NULL);
 	i = 0;
 	j = 0;
 	idx = -1;
 	str = malloc((ft_strlen_ignore_char(s, c) + 1) * sizeof(char *));
-	if (str == NULL)
+	if (str == NULL || !s)
 		return (NULL);
 	while (i <= ft_strlen(s))
 	{
 		if (s[i] != c && idx < 0)
 			idx = i;
-		else if ((s[i] == c || i == ft_strlen(s))
-					&& idx >= 0)
+		else if ((s[i] == c || i == ft_strlen(s)) && idx >= 0)
 		{
 			str[j++] = ft_strcut(s, idx, i);
 			idx = -1;

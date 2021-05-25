@@ -9,7 +9,7 @@
  */
 static size_t	ft_itoa_len(int n)
 {
-	size_t len;
+	size_t	len;
 
 	len = 0;
 	if (n < 0 || n == 0)
@@ -41,24 +41,20 @@ char	*ft_itoa(int n)
 	if (str == NULL)
 		return (NULL);
 	if (n == 0)
-	{
 		str[0] = '0';
-		return (str);
-	}
-	len--;
 	if (n < 0)
 	{
 		str[0] = '-';
 		if (n == INT_MIN)
 		{
-			str[len--] = '8';
+			str[len-- - 1] = '8';
 			n /= 10;
 		}
 		n = -n;
 	}
 	while (n != 0 && len >= 0)
 	{
-		str[len--] = n % 10 + 48;
+		str[len-- - 1] = n % 10 + 48;
 		n /= 10;
 	}
 	return (str);
