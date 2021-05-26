@@ -1,9 +1,3 @@
-/**
- * @brief Converts uppercase character to lowercase.
- * 
- * @param c Character to be converted
- * @return int Returns converted lowercase character.
- */
 int	ft_tolower(int c)
 {
 	char	dist;

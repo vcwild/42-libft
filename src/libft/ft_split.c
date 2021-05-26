@@ -50,17 +50,6 @@ static char	*ft_strcut(const char *str, int start, int end)
 	return (s);
 }
 
-/**
- * @brief Allocates (with malloc(3)) and returns an array
- * of strings obtained by splitting ’s’ using the
- * character ’c’ as a delimiter. The array must be
- * ended by a NULL pointer.
- *
- * @param s The string to be split
- * @param c The delimiter character
- * @return char** Returns a matrix of two splitted arrays,
- * else returns NULL if allocation fails.
- */
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;

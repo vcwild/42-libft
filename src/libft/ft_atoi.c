@@ -11,12 +11,6 @@ static int	ft_isspace(char c)
 	return (0);
 }
 
-/**
- * @brief converts the initial portion of the string pointed to by nptr to int.
- * 
- * @param nptr Pointer to the area of memory of the string to be converted
- * @return int The converted value or 0 on error
- */
 int	ft_atoi(const char *nptr)
 {
 	int	res;

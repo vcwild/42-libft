@@ -22,15 +22,6 @@ static size_t	ft_itoa_len(int n)
 	return (len);
 }
 
-/**
- * @brief Allocates (with malloc(3)) and returns a string
- * representing the integer received as an argument.
- * Negative numbers must be handled.
- *
- * @param n The integer to convert
- * @return char* Returns the string representing the integer.
- * NULL if the allocation fails.
- */
 char	*ft_itoa(int n)
 {
 	size_t	len;
