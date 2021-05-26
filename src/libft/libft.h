@@ -152,6 +152,34 @@ size_t		ft_strlcat(char *dest, char *src, size_t size);
 char		*ft_strchr(const char *s, int c);
 
 /**
+ * @brief Finds the end of the string `s`, then returns
+ * a pointer to the first occurrence of the character
+ * `c` in the string `s` by iterating backwards.
+ *
+ * @param s Pointer to the string memory area
+ * @param c Character to be searched inside the string s
+ * @return char* Return a pointer to the matched character
+ * or NULL if the character is not found.
+ */
+char		*ft_strrchr(const char *s, int c);
+
+/**
+ * @brief Locates the first occurrence of the null-terminated
+ * string little in the string big, where not more than `len` characters
+ * are searched. Characters that appear after a `\\0` character are not
+ * searched.
+ *
+ * @param big		String to be searched by `little`
+ * @param little	String to search in `big`
+ * @param len		Number of bytes to search
+ * @return char* If little is an empty string, big is returned.
+ * If little occurs nowhere in big, NULL is returned.
+ * otherwise a pointer to the first character of the first occurrence
+ * of little is returned.
+ */
+char		*ft_strnstr(const char *big, const char *little, size_t len);
+
+/**
  * @brief Compares the two strings s1 and s2.
  * The locale is not taken into account
  *
@@ -166,9 +194,11 @@ char		*ft_strchr(const char *s, int c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 
 /**
- * @brief converts the initial portion of the string pointed to by nptr to int.
+ * @brief converts the initial portion of the string pointed
+ * to by nptr to int.
  *
- * @param nptr Pointer to the area of memory of the string to be converted
+ * @param nptr Pointer to the area of memory of the string
+ * to be converted
  * @return int The converted value or 0 on error
  */
 int			ft_atoi(const char *str);
