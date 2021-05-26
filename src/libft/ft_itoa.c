@@ -1,52 +1,71 @@
 #include "libft.h"
 
 /**
- * @brief Get the size of memory for an integer to string conversion
- *
- * @param n Integer to be converted
- * @return int Return size of integer to string conversion
- *
+ * @brief Converts the integer `num` into the string `str`.
+ * 
+ * @param str Pointer to the string to allocate `num`
+ * @param size Buffer size to allocate the string
+ * @param num Integer to be converted to string
+ * @param is_negative If `num` is negative
+ * @return char* Returns the integer `num` as a string with
+ * NULL-terminated byte.
  */
-static size_t	ft_itoa_len(int n)
+static char	*convert_itoa(char *str,
+						  size_t size,
+						  unsigned int num,
+						  unsigned int is_negative)
+{
+	str[size] = '\0';
+	while (size--)
+	{
+		str[size] = (num % 10) + 48;
+		num /= 10;
+	}
+	if (is_negative)
+		str[0] = '-';
+	return (str);
+}
+
+/**
+ * @brief Returns the length of `num` to allow the
+ * conversion of `num` integer to a string.
+ *
+ * @param num The integer to analyse
+ * @return size_t Returns the buffer size to allocate `num`
+ * as a string. If `num` is negative, returns length + 1 to
+ * also allocate the negative sign.
+ */
+size_t	ft_numlen(int num)
 {
 	size_t	len;
 
-	len = 0;
-	if (n < 0 || n == 0)
-		len = 1;
-	while (n)
-	{
+	len = 1;
+	if (num < 0)
 		len++;
-		n /= 10;
+	num /= 10;
+	while (num)
+	{
+		num /= 10;
+		len++;
 	}
 	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	size_t	len;
-	char	*str;
+	size_t			n_digits;
+	unsigned int	is_negative;
+	char			*str;
 
-	len = ft_itoa_len(n);
-	str = (char *)malloc((len + 1) * sizeof(char));
-	if (str == NULL)
-		return (NULL);
-	if (n == 0)
-		str[0] = '0';
+	n_digits = ft_numlen(n);
+	is_negative = 0;
 	if (n < 0)
 	{
-		str[0] = '-';
-		if (n == INT_MIN)
-		{
-			str[len-- - 1] = '8';
-			n /= 10;
-		}
+		is_negative = 1;
 		n = -n;
 	}
-	while (n != 0 && len >= 0)
-	{
-		str[len-- - 1] = n % 10 + 48;
-		n /= 10;
-	}
-	return (str);
+	str = malloc(sizeof(char) * (n_digits + 1));
+	if (str == NULL)
+		return (NULL);
+	return (convert_itoa(str, n_digits, (unsigned int)n, is_negative));
 }

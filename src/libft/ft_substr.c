@@ -2,22 +2,22 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	char	*str;
+	size_t	s_len;
+	char	*s_start;
+	char	*sub;
+	char	*sub_iter;
 
 	if (!s)
 		return (NULL);
-	str = (char *)malloc((len + 1) * sizeof(char));
-	if (str == NULL)
+	sub = (char *)malloc((len + 1) * sizeof(char));
+	if (sub == NULL)
 		return (NULL);
-	i = 0;
-	while ((i < len)
-		&& (s[start + i] != '\0')
-		&& ((start + i) < ft_strlen(s)))
-	{
-		str[i] = s[start + i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	s_start = (char *)s;
+	s_len = ft_strlen(s);
+	sub_iter = sub;
+	s += start;
+	while (((size_t)(s - s_start) < s_len) && len--)
+		*sub_iter++ = *s++;
+	*sub_iter = '\0';
+	return (sub);
 }
