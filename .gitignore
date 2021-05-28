@@ -59,3 +59,5 @@ dkms.conf
 src/test
 /env
 .vscode
+src/**/libftTester
+/Libftest
