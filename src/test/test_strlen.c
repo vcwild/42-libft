@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <stddef.h>
 
-int	ft_strlen(char *array);
+size_t	ft_strlen(const char *s);
 
 int	main(void)
 {
