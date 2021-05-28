@@ -1,14 +1,14 @@
 #include "libft.h"
 
 /**
- * @brief Counts the string length of `s` while ignoring
- * any `c` character if found.
+ * @brief Counts the number of words in `s`
+ * by using the character `c` as word delimiter.
  *
  * @param s Pointer to the area of memory of the string
- * @param c Character to ignore
- * @return int Returns the string length except for any `c` character.
+ * @param c Word delimiter
+ * @return int Returns the number of words in string `s`.
  */
-static int	ft_strlen_ignore_c(char const *s, char c)
+static int	word_count(char const *s, char c)
 {
 	size_t	len;
 	size_t	is_c;
@@ -29,15 +29,17 @@ static int	ft_strlen_ignore_c(char const *s, char c)
 }
 
 /**
- * @brief Counts the number of times the character `c` is found
- * in the string `s`.
+ * @brief If the string `s` starts with `c`, then the
+ * function returns the next pointer to `s` that is not
+ * equal to `c`.
  *
  * @param s Pointer to the area of memory of the string
- * @param c Character to count occurrences in the string `s`
- * @return char const* Returns the number of occurrences of `c`
- * in the string `s`.
+ * @param c Character to skip occurrences in the string `s`
+ * @return char const* Returns `s` when the next character
+ * is not `c`. If every occurrence of `s` is equal to `c`,
+ * then returns the NULL-terminated byte.
  */
-static char const	*count_c_in_s(char const *s, char c)
+static char const	*skip_c_in_s(char const *s, char c)
 {
 	while (*s && *s == c)
 		s++;
@@ -63,14 +65,14 @@ static char	**ft_word_split(char **s_list, char const *s, char c, size_t len)
 
 	s_list_start = s_list;
 	idx = 0;
-	s = count_c_in_s(s, c);
+	s = skip_c_in_s(s, c);
 	while (len--)
 	{
 		c_pos = ft_strchr(s, c);
 		if (c_pos != NULL)
 		{
 			*s_list = ft_substr(s, idx, c_pos - s);
-			s = count_c_in_s(c_pos, c);
+			s = skip_c_in_s(c_pos, c);
 		}
 		else
 			*s_list = ft_substr(s, idx, ft_strlen(s) + 1);
@@ -87,7 +89,7 @@ char	**ft_split(char const *s, char c)
 
 	if (s == NULL)
 		return (NULL);
-	size = ft_strlen_ignore_c(s, c);
+	size = word_count(s, c);
 	s_list = malloc(sizeof(char **) * (size + 1));
 	if (s_list == NULL)
 		return (NULL);
