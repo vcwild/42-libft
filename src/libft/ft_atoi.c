@@ -6,7 +6,8 @@ static int	ft_isspace(char c)
 		|| c == '\v'
 		|| c == '\r'
 		|| c == '\n'
-		|| c =='\f')
+		|| c == '\f'
+		|| c == ' ')
 		return (1);
 	return (0);
 }
@@ -20,9 +21,10 @@ int	ft_atoi(const char *nptr)
 	res = 0;
 	while (ft_isspace(*nptr))
 		nptr++;
-	if (*nptr == '-')
+	if (*nptr == '-' || *nptr == '+')
 	{
-		is_neg = 1;
+		if (*nptr == '-')
+			is_neg = 1;
 		nptr++;
 	}
 	else if (*nptr == '+')
