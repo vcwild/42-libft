@@ -2,22 +2,22 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	s_len;
-	char	*s_start;
-	char	*sub;
-	char	*sub_iter;
+	unsigned int	s_len;
+	unsigned int	max_len;
+	char			*sub;
 
 	if (!s)
 		return (NULL);
-	sub = (char *)malloc((len + 1) * sizeof(char));
+	s_len = ft_strlen(s);
+	if (start < s_len)
+		max_len = s_len - start;
+	if (start >= s_len)
+		max_len = 0;
+	if (max_len > len)
+		max_len = len;
+	sub = (char *)malloc((max_len + 1) * sizeof(char));
 	if (sub == NULL)
 		return (NULL);
-	s_start = (char *)s;
-	s_len = ft_strlen(s);
-	sub_iter = sub;
-	s += start;
-	while (((size_t)(s - s_start) < s_len) && len--)
-		*sub_iter++ = *s++;
-	*sub_iter = '\0';
+	ft_strlcpy(sub, s + start, max_len + 1);
 	return (sub);
 }
