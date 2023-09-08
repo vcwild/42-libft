@@ -13,4 +13,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Compile the program
         run: |
+          cd src/libft
           make
