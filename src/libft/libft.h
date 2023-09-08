@@ -415,7 +415,7 @@ t_list		*ft_lstlast(t_list *lst);
 
 /**
  * @brief Adds the `new` element at the end of the list.
- * 
+ *
  * @param lst The address of a pointer to the first link of a list
  * @param new The address of a pointer to the element to be
  * added to the list.
@@ -466,5 +466,39 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
  * @return t_list* Returns the new list or NULL if the allocation fails.
  */
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/**
+ * @brief Returns the length of `num` to allow the
+ * conversion of `num` integer to a string.
+ *
+ * @param num The integer to analyse
+ * @return size_t Returns the buffer size to allocate `num`
+ * as a string. If `num` is negative, returns length + 1 to
+ * also allocate the negative sign.
+ */
+size_t		ft_numlen(int num);
+
+/**
+ * @brief Counts the number of words in `s`
+ * by using the character `c` as word delimiter.
+ *
+ * @param s Pointer to the area of memory of the string
+ * @param c Word delimiter
+ * @return int Returns the number of words in string `s`.
+ */
+int			ft_word_count(char const *s, char c);
+
+/**
+ * @brief Splits the words into a list of strings by using
+ * the `c` delimiter.
+ *
+ * @param s_list Pointer to receive the list of strings
+ * @param s String containing the list of words
+ * @param c Character to split the words
+ * @param len Size of the `s_list`
+ * @return char** Returns a NULL-terminated list of words
+ * separated by the character `c`.
+ */
+char		**ft_word_split(char **s_list, char const *s, char c, size_t len);
 
 #endif

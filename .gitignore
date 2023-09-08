@@ -58,9 +58,11 @@ dkms.conf
 
 src/test
 /env
+.venv/
+.env/
+venv/
 .vscode
 
 /libftTester
 /Libftest
 /libft-war-machine
-libft/
