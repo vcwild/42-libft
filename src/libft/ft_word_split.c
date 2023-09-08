@@ -18,26 +18,75 @@ static char const	*skip_c_in_s(char const *s, char c)
 	return (s);
 }
 
-char	**ft_word_split(char **s_list, char const *s, char c, size_t len)
+/**
+ * @brief Frees the memory allocated for an array of
+ * strings and sets the array to NULL.
+ *
+ * This function takes an array of strings (`char**`)
+ * and frees the memory allocated for each individual
+ * string and then frees the memory allocated for the
+ * array itself. Afterward, it sets the array pointer
+ * to NULL to avoid any dangling pointers.
+ *
+ * @param s_list Pointer to the array of strings
+ * to be freed.
+ */
+static void	free_word_list(char **s_list)
 {
-	char	*c_pos;
-	int		idx;
+	char	**current;
+
+	if (s_list == NULL)
+		return ;
+	current = s_list;
+	while (*current != NULL)
+	{
+		free(*current);
+		*current = NULL;
+		current++;
+	}
+	free(s_list);
+}
+
+static char	*extract_substring(const char *s, char c, size_t *len)
+{
+	const char	*c_pos;
+	size_t		substr_len;
+	char		*substring;
+
+	c_pos = ft_strchr(s, c);
+	if (c_pos != NULL)
+		substr_len = (size_t)(c_pos - s);
+	else
+		substr_len = ft_strlen(s);
+	*len = substr_len;
+	substring = ft_substr(s, 0, substr_len);
+	return (substring);
+}
+
+char	**ft_word_split(
+	char **s_list,
+	char const *s,
+	char c,
+	size_t len)
+{
 	char	**s_list_start;
+	int		idx;
+	size_t	substr_len;
+	char	*substring;
 
 	s_list_start = s_list;
 	idx = 0;
-	s = skip_c_in_s(s, c);
 	while (len--)
 	{
-		c_pos = ft_strchr(s, c);
-		if (c_pos != NULL)
-		{
-			*s_list = ft_substr(s, idx, c_pos - s);
-			s = skip_c_in_s(c_pos, c);
-		}
-		else
-			*s_list = ft_substr(s, idx, ft_strlen(s) + 1);
+		s = skip_c_in_s(s, c);
+		substring = extract_substring(s, c, &substr_len);
+		if (substring == NULL)
+			return (free_word_list(s_list_start), NULL);
+		*s_list = substring;
 		s_list++;
+		s += substr_len;
+		if (substr_len == 0)
+			break ;
 	}
 	*s_list = NULL;
 	return (s_list_start);
