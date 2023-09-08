@@ -1,14 +1,15 @@
+<div align="center">
+  <img src=".github/assets/image.png" width="230px" style="border-radius: 15px;" alt="logo"/>
+</div>
+<br/>
+<div align="center">
+  <img src="https://img.shields.io/github/languages/count/vcwild/42-libft?color=%234466fb&style=flat-square" alt="languages" />
+  <img src="https://img.shields.io/github/license/vcwild/42-libft?color=%234466fb&style=flat-square" alt="license" />
+  <img src="https://img.shields.io/github/repo-size/vcwild/42-libft?color=%234466fb&style=flat-square" alt="repo size" />
+  <img src="https://img.shields.io/github/actions/workflow/status/vcwild/42-libft/build.yml?branch=main&style=flat-square&color=%234466fb" alt="build" />
+</div>
+
 # Libft
-
-* [Introduction](#introduction)
-* [Part 01](#part_1)
-* [Part 02](#part_2)
-* [Bonus Functions](#bonus)
-* [Extras](#extras)
-* [Make](#make)
-* [License](#license)
-
-## Introduction
 
 Libft is a project for Standard C library override functions that should be done from the ground up, and must behave the same as the originals
 
@@ -16,6 +17,15 @@ Libft is a project for Standard C library override functions that should be done
 * **Second part:** code a set of functions that are either not included in the libc, or included in a different form.
 * **Bonus part:** code functions to manipulate lists.
 * **Extras:** add any function to the libft as I see fit.
+
+## Table of Contents
+
+* [Part 01](#part-01)
+* [Part 02](#part-02)
+* [Bonus Functions](#bonus-functions)
+* [Extras](#extras)
+* [Make](#make)
+* [License](#license)
 
 ### Part 01
 
